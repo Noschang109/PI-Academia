@@ -9,6 +9,7 @@ import Conexao.Conexao;
 import Model.Plano;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -24,22 +25,22 @@ public class PlanoDAO {
             //cria espaço de trabalho SQl, é a área no Java onde
             //vamo executar os scripts SQL
             String sql;
-            sql = "insert into plano values (null, ?,?,?,?,?)";
+            sql = "insert into planodetreino values (null, ?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setInt(1, pVO.getId());
-            pst.setString(2, pVO.getNome());
-            pst.setFloat(3, pVO.getValor());
-            pst.setInt(4, pVO.getVencimento());
+            pst.setString(1, pVO.getNome());
+            pst.setFloat(2, pVO.getValor());
+            pst.setInt(3, pVO.getVencimento());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar Plano!\n"
                     + ex.getMessage());
         }
     }
+
     public void deletarPlanoDAO(String cpf) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "delete from plano where cpf = ?";
+            String sql = "delete from planodetreino where cpf = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cpf);
             pst.executeUpdate();
@@ -48,10 +49,11 @@ public class PlanoDAO {
                     + ex.getMessage());
         }
     }
-     public void atualizaPlanoByDoc(Plano cVO) {
+
+    public void atualizaPlanoByDoc(Plano cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "update plano where funcionario set nome = ?, valor = ?, vencimento = ?";
+            String sql = "update planodetreino where funcionario set nome = ?, valor = ?, vencimento = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
             pst.setFloat(2, cVO.getValor());
@@ -62,4 +64,15 @@ public class PlanoDAO {
                     + ex.getMessage());
         }
     }
+
+    public ResultSet getPlanoBOX() throws SQLException {
+        Connection con = Conexao.getConexao();
+        String sql = "SELECT nome FROM planodetreino ORDER BY nome ASC";
+        PreparedStatement pst = con.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        return rs;
+
+    }
+
+    
 }

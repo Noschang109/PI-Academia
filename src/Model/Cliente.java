@@ -5,22 +5,21 @@ import java.sql.Date;
 public class Cliente {
 
     private int IdCliente;
-    private int plano;
     private String nome;
     private String endereco;
     private String dataNascimento;
-    private float altura;
-    private float peso;
+    private String altura;
+    private String peso;
     private String imc;
     private String ultimoAcesso;
     private String cpf;
+    private Plano plano;
 
     public Cliente() {
     }
 
-    public Cliente(int IdCliente, int plano, String nome, String endereco, String dataNascimento, float altura, float peso, String imc, String ultimoAcesso, String cpf) {
+    public Cliente(int IdCliente, String nome, String endereco, String dataNascimento, String altura, String peso, String imc, String ultimoAcesso, String cpf, Plano plano) {
         this.IdCliente = IdCliente;
-        this.plano = plano;
         this.nome = nome;
         this.endereco = endereco;
         this.dataNascimento = dataNascimento;
@@ -29,6 +28,7 @@ public class Cliente {
         this.imc = imc;
         this.ultimoAcesso = ultimoAcesso;
         this.cpf = cpf;
+        this.plano = plano;
     }
 
     public int getIdCliente() {
@@ -37,14 +37,6 @@ public class Cliente {
 
     public void setIdCliente(int IdCliente) {
         this.IdCliente = IdCliente;
-    }
-
-    public int getPlano() {
-        return plano;
-    }
-
-    public void setPlano(int plano) {
-        this.plano = plano;
     }
 
     public String getNome() {
@@ -71,19 +63,19 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public float getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(float altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
-    public float getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(String peso) {
         this.peso = peso;
     }
 
@@ -111,12 +103,19 @@ public class Cliente {
         this.cpf = cpf;
     }
 
+    public Plano getPlano() {
+        return plano;
+    }
+
+    public void setPlano(Plano plano) {
+        this.plano = plano;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "IdCliente=" + IdCliente + ", plano=" + plano + ", nome=" + nome + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", altura=" + altura + ", peso=" + peso + ", imc=" + imc + ", ultimoAcesso=" + ultimoAcesso + ", cpf=" + cpf + '}';
+        return "Cliente{" + "IdCliente=" + IdCliente + ", nome=" + nome + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", altura=" + altura + ", peso=" + peso + ", imc=" + imc + ", ultimoAcesso=" + ultimoAcesso + ", cpf=" + cpf + ", plano=" + plano + '}';
     }
 
     
-    
-    
+
 }

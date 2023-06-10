@@ -20,8 +20,8 @@ public class ClienteDAO {
             pst.setString(1, cVO.getNome());
             pst.setString(2, cVO.getEndereco());
             pst.setString(3, cVO.getDataNascimento());
-            pst.setFloat(4, cVO.getAltura());
-            pst.setFloat(5, cVO.getPeso());
+            pst.setString(4, cVO.getAltura());
+            pst.setString(5, cVO.getPeso());
             pst.setString(6, cVO.getUltimoAcesso());
             pst.setString(7, cVO.getCpf());
 
@@ -45,8 +45,8 @@ public class ClienteDAO {
                 c.setNome(rs.getString("nome"));
                 c.setEndereco(rs.getString("endereco"));
                 c.setDataNascimento(rs.getString("dataNascimento"));
-                c.setAltura(rs.getFloat("altura"));
-                c.setPeso(rs.getFloat("peso"));
+                c.setAltura(rs.getString("altura"));
+                c.setPeso(rs.getString("peso"));
                 c.setImc(rs.getString("imc"));
                 clientes.add(c);
             }
@@ -68,14 +68,14 @@ public class ClienteDAO {
             while (rs.next()) {
                 //lado do java |x| (lado do banco)
                 c.setIdCliente(rs.getInt("IdCliente"));
-                c.setPeso(rs.getFloat("peso"));
+                c.setPeso(rs.getString("peso"));
                 c.setImc(rs.getString("imc"));
                 c.setUltimoAcesso(rs.getString("ultimoAcesso"));
                 c.setCpf(rs.getString("cpf"));
                 c.setNome(rs.getString("nome"));
                 c.setEndereco(rs.getString("endereco"));
                 c.setDataNascimento(rs.getString("dataNascimento"));
-                c.setAltura(rs.getFloat("altura"));
+                c.setAltura(rs.getString("altura"));
             }
         } catch (SQLException ex) {
             System.out.println("Erro ao consultar CPF!\n"
@@ -109,7 +109,7 @@ public class ClienteDAO {
             pst.setString(5, caVO.getNome());
             pst.setString(6, caVO.getEndereco());
             pst.setString(6, caVO.getDataNascimento());
-            pst.setFloat(7, caVO.getAltura());
+            pst.setString(7, caVO.getAltura());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao atualizar Cliente!\n"

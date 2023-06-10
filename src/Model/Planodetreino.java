@@ -11,6 +11,7 @@ package Model;
  */
 public class Planodetreino {
     private int idPlanodeTreino;
+    private String nome;
     private String series;
     private float carga;
     private int repeticoes;
@@ -19,8 +20,9 @@ public class Planodetreino {
     public Planodetreino() {
     }
 
-    public Planodetreino(int idPlanodeTreino, String series, float carga, int repeticoes) {
+    public Planodetreino(int idPlanodeTreino, String nome, String series, float carga, int repeticoes) {
         this.idPlanodeTreino = idPlanodeTreino;
+        this.nome = nome;
         this.series = series;
         this.carga = carga;
         this.repeticoes = repeticoes;
@@ -32,6 +34,14 @@ public class Planodetreino {
 
     public void setIdPlanodeTreino(int idPlanodeTreino) {
         this.idPlanodeTreino = idPlanodeTreino;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSeries() {
@@ -60,8 +70,10 @@ public class Planodetreino {
 
     @Override
     public String toString() {
-        return "Planodetreino{" + "idPlanodeTreino=" + idPlanodeTreino + ", series=" + series + ", carga=" + carga + ", repeticoes=" + repeticoes + '}';
+        return "Planodetreino{" + "idPlanodeTreino=" + idPlanodeTreino + ", nome=" + nome + ", series=" + series + ", carga=" + carga + ", repeticoes=" + repeticoes + '}';
     }
+
+    
     
     
 }

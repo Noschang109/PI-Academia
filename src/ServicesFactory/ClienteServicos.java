@@ -40,5 +40,7 @@ public class ClienteServicos {
         ClienteDAO cDAO = DAOFactory.getClienteDAO();
         return cDAO.getClientesDAO();
     }
+    
+    
 }
 

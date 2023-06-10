@@ -16,9 +16,10 @@ public class Venda {
         private int idVenda;
         private int idCliente;
         private int idFuncionario;
-        private int status;
+        private String status;
         private float total;
         private String dtVenda;
+        private String produto;
 
         //Visualização
         private String totalVisual;
@@ -27,28 +28,15 @@ public class Venda {
         public Vendas() {
         }
 
-        public Vendas(int idVenda, int idCliente, int idFuncionario, int status, float total, String dtVenda) {
+        public Vendas(int idVenda, int idCliente, int idFuncionario, String status, float total, String dtVenda, String produto, String totalVisual, String dtVendaVisual) {
             this.idVenda = idVenda;
             this.idCliente = idCliente;
             this.idFuncionario = idFuncionario;
             this.status = status;
             this.total = total;
             this.dtVenda = dtVenda;
-        }
-
-        public String getTotalVisual() {
-            return totalVisual;
-        }
-
-        public void setTotalVisual(String totalVisual) {
+            this.produto = produto;
             this.totalVisual = totalVisual;
-        }
-
-        public String getDtVendaVisual() {
-            return dtVendaVisual;
-        }
-
-        public void setDtVendaVisual(String dtVendaVisual) {
             this.dtVendaVisual = dtVendaVisual;
         }
 
@@ -76,11 +64,11 @@ public class Venda {
             this.idFuncionario = idFuncionario;
         }
 
-        public int getStatus() {
+        public String getStatus() {
             return status;
         }
 
-        public void setStatus(int status) {
+        public void setStatus(String status) {
             this.status = status;
         }
 
@@ -99,5 +87,35 @@ public class Venda {
         public void setDtVenda(String dtVenda) {
             this.dtVenda = dtVenda;
         }
+
+        public String getProduto() {
+            return produto;
+        }
+
+        public void setProduto(String produto) {
+            this.produto = produto;
+        }
+
+        public String getTotalVisual() {
+            return totalVisual;
+        }
+
+        public void setTotalVisual(String totalVisual) {
+            this.totalVisual = totalVisual;
+        }
+
+        public String getDtVendaVisual() {
+            return dtVendaVisual;
+        }
+
+        public void setDtVendaVisual(String dtVendaVisual) {
+            this.dtVendaVisual = dtVendaVisual;
+        }
+
+        @Override
+        public String toString() {
+            return "Vendas{" + "idVenda=" + idVenda + ", idCliente=" + idCliente + ", idFuncionario=" + idFuncionario + ", status=" + status + ", total=" + total + ", dtVenda=" + dtVenda + ", produto=" + produto + ", totalVisual=" + totalVisual + ", dtVendaVisual=" + dtVendaVisual + '}';
+        }
+
     }
 }
