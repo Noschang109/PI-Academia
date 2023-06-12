@@ -110,12 +110,12 @@ public class FuncionarioDAO {
     public void atualizaFuncionarioByDoc(Funcionario eVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "update funcionarios set  nome = ? , celular = ? , endereco = ? , cep = ? ";
+            String sql = "update funcionario set  cpf = ? , rg = ? , nome = ? , celular = ?  , endereco = ? ,  cep = ? where     = ?";
             PreparedStatement pst = con.prepareStatement(sql);
+             
+            pst.setString(0, sql);
             pst.setString(1, eVO.getNome());
-            pst.setString(2, eVO.getCelular());
-            pst.setString(3, eVO.getEndereco());
-            pst.setString(4, eVO.getCep());
+           
 
             pst.executeUpdate();
         } catch (SQLException ex) {

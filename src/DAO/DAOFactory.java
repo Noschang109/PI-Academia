@@ -13,7 +13,7 @@ public class DAOFactory {
 
     private static ClienteDAO cDAO = new ClienteDAO();
     private static FuncionarioDAO fDAO = new FuncionarioDAO();
-    private static PlanoDAO pDAO = new PlanoDAO();
+    private static PlanodeTreinoDAO pDAO = new PlanodeTreinoDAO();
 
     public static ClienteDAO getClienteDAO() {
         return cDAO;
@@ -23,7 +23,7 @@ public class DAOFactory {
         return fDAO;
     }
 
-    public static PlanoDAO getPlanoDAO() {
+    public static PlanodeTreinoDAO getPlanoDAO() {
         return pDAO;
     }
 }

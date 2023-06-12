@@ -10,38 +10,36 @@ package Model;
  * @author MMMM
  */
 public class Planodetreino {
-    private int idPlanodeTreino;
-    private String nome;
+    private int idPlano;
+    private String nomePlano;
     private String series;
-    private float carga;
     private int repeticoes;
     
     
     public Planodetreino() {
     }
 
-    public Planodetreino(int idPlanodeTreino, String nome, String series, float carga, int repeticoes) {
-        this.idPlanodeTreino = idPlanodeTreino;
-        this.nome = nome;
+    public Planodetreino(int idPlano, String nomePlano, String series, int repeticoes) {
+        this.idPlano = idPlano;
+        this.nomePlano = nomePlano;
         this.series = series;
-        this.carga = carga;
         this.repeticoes = repeticoes;
     }
 
-    public int getIdPlanodeTreino() {
-        return idPlanodeTreino;
+    public int getIdPlano() {
+        return idPlano;
     }
 
-    public void setIdPlanodeTreino(int idPlanodeTreino) {
-        this.idPlanodeTreino = idPlanodeTreino;
+    public void setIdPlano(int idPlano) {
+        this.idPlano = idPlano;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomePlano() {
+        return nomePlano;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomePlano(String nomePlano) {
+        this.nomePlano = nomePlano;
     }
 
     public String getSeries() {
@@ -50,14 +48,6 @@ public class Planodetreino {
 
     public void setSeries(String series) {
         this.series = series;
-    }
-
-    public float getCarga() {
-        return carga;
-    }
-
-    public void setCarga(float carga) {
-        this.carga = carga;
     }
 
     public int getRepeticoes() {
@@ -70,10 +60,8 @@ public class Planodetreino {
 
     @Override
     public String toString() {
-        return "Planodetreino{" + "idPlanodeTreino=" + idPlanodeTreino + ", nome=" + nome + ", series=" + series + ", carga=" + carga + ", repeticoes=" + repeticoes + '}';
+        return "Planodetreino{" + "idPlano=" + idPlano + ", nomePlano=" + nomePlano + ", series=" + series + ", repeticoes=" + repeticoes + '}';
     }
 
-    
-    
     
 }

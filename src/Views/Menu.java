@@ -32,8 +32,6 @@ public class Menu extends javax.swing.JFrame {
         jlImagem = new javax.swing.JLabel();
         jSeparador = new javax.swing.JSeparator();
         jMenu = new javax.swing.JMenuBar();
-        jmPlano = new javax.swing.JMenu();
-        jmCadastrarplano = new javax.swing.JMenuItem();
         jmUsuario = new javax.swing.JMenu();
         jmCadastrarCliente = new javax.swing.JMenuItem();
         jmCadastrarFuncionario = new javax.swing.JMenuItem();
@@ -73,19 +71,6 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(0, 102, Short.MAX_VALUE))
         );
 
-        jmPlano.setText("Gerenciar Plano");
-
-        jmCadastrarplano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenicon/fitness-on-line.png"))); // NOI18N
-        jmCadastrarplano.setText("Cadastra plano");
-        jmCadastrarplano.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadastrarplanoActionPerformed(evt);
-            }
-        });
-        jmPlano.add(jmCadastrarplano);
-
-        jMenu.add(jmPlano);
-
         jmUsuario.setText("Gerenciar Usuario");
 
         jmCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imag/fitness-on-line.png"))); // NOI18N
@@ -123,10 +108,6 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jmCadastrarplanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastrarplanoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmCadastrarplanoActionPerformed
 
     private void jmCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadastrarClienteActionPerformed
         CadastrarCliente cadastro = new CadastrarCliente();
@@ -181,8 +162,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JMenuItem jmCadastrarCliente;
     private javax.swing.JMenuItem jmCadastrarFuncionario;
-    private javax.swing.JMenuItem jmCadastrarplano;
-    private javax.swing.JMenu jmPlano;
     private javax.swing.JMenu jmUsuario;
     // End of variables declaration//GEN-END:variables
 }

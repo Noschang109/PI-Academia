@@ -6,8 +6,8 @@
 package ServicesFactory;
 
 import DAO.DAOFactory;
-import DAO.PlanoDAO;
-import Model.Plano;
+import DAO.PlanodeTreinoDAO;
+import Model.Planodetreino;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,22 +19,24 @@ import java.util.ArrayList;
 public class PlanoServicos {
 
     public ResultSet carregaPlano() throws SQLException {// Inicio CAR
-        PlanoDAO pDAO = DAOFactory.getPlanoDAO();
+        PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
         pDAO.getPlanoBOX();
         return pDAO.getPlanoBOX();
     }
 
-    public void cadPlano(Plano pVO) {
-        PlanoDAO pDAO = DAOFactory.getPlanoDAO();
+    public void cadPlano(Planodetreino pVO) {
+        PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
         pDAO.cadastrarPlanoDAO(pVO);
     }
 
-    public void deletarPlano(String cpf) {
-        PlanoDAO pDAO = DAOFactory.getPlanoDAO();
-        pDAO.deletarPlanoDAO(cpf);
+    public void deletarPlano(int idplano) {
+        PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
+        pDAO.deletarPlanoDAO(idplano);
     }
-    
-  
-    
+
+    public Planodetreino getPlano(String Plano) {
+        PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
+        return pDAO.getPlano(Plano);
+    }   
     
 }

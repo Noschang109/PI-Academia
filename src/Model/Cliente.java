@@ -6,29 +6,23 @@ public class Cliente {
 
     private int IdCliente;
     private String nome;
-    private String endereco;
-    private String dataNascimento;
-    private String altura;
-    private String peso;
-    private String imc;
-    private String ultimoAcesso;
-    private String cpf;
-    private Plano plano;
+    private String cpf  ;
+    private String idade  ;
+    private String endereco ;
+    private  String peso ;
+    private String altura ;
 
     public Cliente() {
     }
 
-    public Cliente(int IdCliente, String nome, String endereco, String dataNascimento, String altura, String peso, String imc, String ultimoAcesso, String cpf, Plano plano) {
+    public Cliente(int IdCliente, String nome, String cpf, String idade, String endereco, String peso, String altura) {
         this.IdCliente = IdCliente;
         this.nome = nome;
-        this.endereco = endereco;
-        this.dataNascimento = dataNascimento;
-        this.altura = altura;
-        this.peso = peso;
-        this.imc = imc;
-        this.ultimoAcesso = ultimoAcesso;
         this.cpf = cpf;
-        this.plano = plano;
+        this.idade = idade;
+        this.endereco = endereco;
+        this.peso = peso;
+        this.altura = altura;
     }
 
     public int getIdCliente() {
@@ -47,28 +41,28 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
     public String getEndereco() {
         return endereco;
     }
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getAltura() {
-        return altura;
-    }
-
-    public void setAltura(String altura) {
-        this.altura = altura;
     }
 
     public String getPeso() {
@@ -79,43 +73,19 @@ public class Cliente {
         this.peso = peso;
     }
 
-    public String getImc() {
-        return imc;
+    public String getAltura() {
+        return altura;
     }
 
-    public void setImc(String imc) {
-        this.imc = imc;
-    }
-
-    public String getUltimoAcesso() {
-        return ultimoAcesso;
-    }
-
-    public void setUltimoAcesso(String ultimoAcesso) {
-        this.ultimoAcesso = ultimoAcesso;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Plano getPlano() {
-        return plano;
-    }
-
-    public void setPlano(Plano plano) {
-        this.plano = plano;
+    public void setAltura(String altura) {
+        this.altura = altura;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "IdCliente=" + IdCliente + ", nome=" + nome + ", endereco=" + endereco + ", dataNascimento=" + dataNascimento + ", altura=" + altura + ", peso=" + peso + ", imc=" + imc + ", ultimoAcesso=" + ultimoAcesso + ", cpf=" + cpf + ", plano=" + plano + '}';
+        return "Cliente{" + "IdCliente=" + IdCliente + ", nome=" + nome + ", cpf=" + cpf + ", idade=" + idade + ", endereco=" + endereco + ", peso=" + peso + ", altura=" + altura + '}';
     }
 
     
-
+      
 }

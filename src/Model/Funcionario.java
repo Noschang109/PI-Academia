@@ -3,8 +3,8 @@ package Model;
 public class Funcionario {
 
     private int IdFuncionario;
-    private String rg;
     private String cpf;
+    private String rg;
     private String nome;
     private String celular;
     private String endereco;
@@ -13,10 +13,10 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(int IdFuncionario, String rg, String cpf, String nome, String celular, String endereco, String cep) {
+    public Funcionario(int IdFuncionario, String cpf, String rg, String nome, String celular, String endereco, String cep) {
         this.IdFuncionario = IdFuncionario;
-        this.rg = rg;
         this.cpf = cpf;
+        this.rg = rg;
         this.nome = nome;
         this.celular = celular;
         this.endereco = endereco;
@@ -31,20 +31,20 @@ public class Funcionario {
         this.IdFuncionario = IdFuncionario;
     }
 
-    public String getRg() {
-        return rg;
-    }
-
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getNome() {
@@ -81,7 +81,8 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario{" + "IdFuncionario=" + IdFuncionario + ", rg=" + rg + ", cpf=" + cpf + ", nome=" + nome + ", celular=" + celular + ", endereco=" + endereco + ", cep=" + cep + '}';
+        return "Funcionario{" + "IdFuncionario=" + IdFuncionario + ", cpf=" + cpf + ", rg=" + rg + ", nome=" + nome + ", celular=" + celular + ", endereco=" + endereco + ", cep=" + cep + '}';
     }
 
+    
 }

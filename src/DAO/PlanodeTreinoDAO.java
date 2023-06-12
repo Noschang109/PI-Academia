@@ -6,30 +6,29 @@
 package DAO;
 
 import Conexao.Conexao;
-import Model.Plano;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import Model.Planodetreino;
 /**
  *
  * @author MMMM
  */
-public class PlanoDAO {
+public class PlanodeTreinoDAO {
 
-    public void cadastrarPlanoDAO(Plano pVO) {
+    public void cadastrarPlanoDAO(Planodetreino pVO) {
         try {
             //busca conexão com o BD
             Connection con = Conexao.getConexao();
             //cria espaço de trabalho SQl, é a área no Java onde
             //vamo executar os scripts SQL
             String sql;
-            sql = "insert into planodetreino values (null, ?,?,?,?,?)";
+            sql = "insert into plano values (null, ?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, pVO.getNome());
-            pst.setFloat(2, pVO.getValor());
-            pst.setInt(3, pVO.getVencimento());
+            pst.setString(1, pVO.getNomePlano());
+            pst.setString(2, pVO.getSeries());
+            pst.setInt(3, pVO.getRepeticoes());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar Plano!\n"
@@ -37,12 +36,12 @@ public class PlanoDAO {
         }
     }
 
-    public void deletarPlanoDAO(String cpf) {
+    public void deletarPlanoDAO(int idplano) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "delete from planodetreino where cpf = ?";
+            String sql = "delete from plano where idplano = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, cpf);
+            pst.setInt(1, idplano);
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao deletar Plano!\n"
@@ -50,14 +49,15 @@ public class PlanoDAO {
         }
     }
 
-    public void atualizaPlanoByDoc(Plano cVO) {
+    public void atualizaPlanoByDoc(Planodetreino cVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "update planodetreino where funcionario set nome = ?, valor = ?, vencimento = ?";
+            String sql = "update plano  set nomeplano = ?, serie = ? , repeticoes = ? where idplano = ?";
             PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, cVO.getNome());
-            pst.setFloat(2, cVO.getValor());
-            pst.setInt(3, cVO.getVencimento());
+            pst.setString(1, cVO.getNomePlano());
+            pst.setString(2, cVO.getSeries());
+            pst.setInt(3, cVO.getRepeticoes());
+            pst.setInt(4, cVO.getIdPlano());
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao atualizar Plano!\n"
@@ -67,12 +67,26 @@ public class PlanoDAO {
 
     public ResultSet getPlanoBOX() throws SQLException {
         Connection con = Conexao.getConexao();
-        String sql = "SELECT nome FROM planodetreino ORDER BY nome ASC";
+        String sql = "SELECT nomeplano FROM plano ORDER BY nomeplano ASC;";
         PreparedStatement pst = con.prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         return rs;
-
     }
 
-    
+    public Planodetreino getPlano(String Plano) {// Inicio GET
+        Planodetreino p = new Planodetreino();
+        Connection con = Conexao.getConexao();
+        try {
+            String sql = "SELECT idplano FROM plano WHERE nomeplano = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, Plano);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                p.setIdPlano(rs.getInt("idplano"));                
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao consultar Planos!\n" + ex.getMessage());
+        }
+        return p;
+    }// Fim GET
 }

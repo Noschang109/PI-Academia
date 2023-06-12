@@ -4,24 +4,6 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenu">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jmPlano">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Gerenciar Plano"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmCadastrarplano">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenicon/fitness-on-line.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Cadastra plano"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadastrarplanoActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jmUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gerenciar Usuario"/>

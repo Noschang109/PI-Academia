@@ -15,16 +15,14 @@ public class ClienteDAO {
         Connection con = Conexao.getConexao();
         try {
             String sql;
-            sql = "insert into cliente values (null,?,?,?,?,?,?,?,?)";
+            sql = "insert into cliente values (null,?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, cVO.getNome());
-            pst.setString(2, cVO.getEndereco());
-            pst.setString(3, cVO.getDataNascimento());
-            pst.setString(4, cVO.getAltura());
+            pst.setString(2, cVO.getCpf());
+            pst.setString(3, cVO.getIdade());
+            pst.setString(4, cVO.getEndereco());
             pst.setString(5, cVO.getPeso());
-            pst.setString(6, cVO.getUltimoAcesso());
-            pst.setString(7, cVO.getCpf());
-
+            pst.setString(6, cVO.getAltura());
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar Cliente!\n"
                     + ex.getMessage());
@@ -43,11 +41,11 @@ public class ClienteDAO {
                 Cliente c = new Cliente();
                 c.setIdCliente(rs.getInt("IDCliente"));
                 c.setNome(rs.getString("nome"));
+                c.setCpf(rs.getString("cpf"));
+                c.setIdade(rs.getString("idade"));
                 c.setEndereco(rs.getString("endereco"));
-                c.setDataNascimento(rs.getString("dataNascimento"));
-                c.setAltura(rs.getString("altura"));
                 c.setPeso(rs.getString("peso"));
-                c.setImc(rs.getString("imc"));
+                c.setAltura(rs.getString("altura"));
                 clientes.add(c);
             }
         } catch (SQLException ex) {
@@ -68,13 +66,11 @@ public class ClienteDAO {
             while (rs.next()) {
                 //lado do java |x| (lado do banco)
                 c.setIdCliente(rs.getInt("IdCliente"));
-                c.setPeso(rs.getString("peso"));
-                c.setImc(rs.getString("imc"));
-                c.setUltimoAcesso(rs.getString("ultimoAcesso"));
-                c.setCpf(rs.getString("cpf"));
                 c.setNome(rs.getString("nome"));
+                c.setCpf(rs.getString("cpf"));
+                c.setIdade(rs.getString("idade"));
                 c.setEndereco(rs.getString("endereco"));
-                c.setDataNascimento(rs.getString("dataNascimento"));
+                c.setPeso(rs.getString("peso"));
                 c.setAltura(rs.getString("altura"));
             }
         } catch (SQLException ex) {
@@ -100,16 +96,10 @@ public class ClienteDAO {
     public void atualizaClienteByDoc(Cliente caVO) {
         try {
             Connection con = Conexao.getConexao();
-            String sql = "update cliente set peso = ? , imc = ? , ultimoAcesso = ? , cpf = ? , nome = ? , endereco = ? , dataNascimento = ? ,altura = ? ";
+            String sql = "update cliente set   nome = ? , cpf  = ? , idade     = ? , endereco = ? ,peso  = ? , altura = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, caVO.getNome());
-            pst.setString(2, caVO.getImc());
-            pst.setString(3, caVO.getUltimoAcesso());
-            pst.setString(4, caVO.getCpf());
-            pst.setString(5, caVO.getNome());
-            pst.setString(6, caVO.getEndereco());
-            pst.setString(6, caVO.getDataNascimento());
-            pst.setString(7, caVO.getAltura());
+
             pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao atualizar Cliente!\n"

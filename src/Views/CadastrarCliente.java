@@ -6,7 +6,7 @@
 package Views;
 
 import Model.Cliente;
-import Model.Cliente2;
+import Model.Planodetreino;
 import ServicesFactory.ClienteServicos;
 import ServicesFactory.FactoryServicos;
 import ServicesFactory.PlanoServicos;
@@ -27,6 +27,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     public CadastrarCliente() {
         initComponents();
         addRowToTable();
+        //CarregaPlano();
         jbEditar.setEnabled(false);
         jbDeletar.setEnabled(false);
     }
@@ -48,11 +49,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jlendereco = new javax.swing.JLabel();
         jtfNome = new javax.swing.JTextField();
         jtfCPF = new javax.swing.JTextField();
-        jlcelular = new javax.swing.JLabel();
         jtfEndereco = new javax.swing.JTextField();
-        jldatadenascimento = new javax.swing.JLabel();
-        jtfdatadenascimento = new javax.swing.JTextField();
-        jlplano = new javax.swing.JLabel();
         jtfaltura = new javax.swing.JTextField();
         jlpeso = new javax.swing.JLabel();
         jtfpeso = new javax.swing.JTextField();
@@ -60,12 +57,12 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jbSalvar = new javax.swing.JButton();
         jbFechar = new javax.swing.JButton();
         jIcon = new javax.swing.JLabel();
-        jcPlano = new javax.swing.JComboBox<>();
         jtTabela = new javax.swing.JScrollPane();
         jtCliente = new javax.swing.JTable();
-        jtfimc = new javax.swing.JTextField();
         jbEditar = new javax.swing.JButton();
         jbDeletar = new javax.swing.JButton();
+        jlidade = new javax.swing.JLabel();
+        jtfidade = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -108,18 +105,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             }
         });
 
-        jlcelular.setForeground(new java.awt.Color(255, 255, 255));
-        jlcelular.setText("Imc");
-
         jtfEndereco.setToolTipText("Endereço completo.");
-
-        jldatadenascimento.setForeground(new java.awt.Color(255, 255, 255));
-        jldatadenascimento.setText("Data de Nascimento");
-
-        jtfdatadenascimento.setToolTipText("Endereço completo.");
-
-        jlplano.setForeground(new java.awt.Color(255, 255, 255));
-        jlplano.setText("*Plano");
 
         jtfaltura.setToolTipText("Endereço completo.");
 
@@ -151,17 +137,17 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
         jtCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "CPF", "Celular", "Endereço", "Data de Nascimento", "Altura", "Peso", "Plano"
+                "Nome", "CPF", "idade", "endereco", "peso", "altura"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -179,8 +165,6 @@ public class CadastrarCliente extends javax.swing.JFrame {
         });
         jtTabela.setViewportView(jtCliente);
 
-        jtfimc.setToolTipText("Endereço completo.");
-
         jbEditar.setMnemonic('E');
         jbEditar.setText("Editar");
         jbEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,6 +178,16 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jbDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbDeletarActionPerformed(evt);
+            }
+        });
+
+        jlidade.setForeground(new java.awt.Color(255, 255, 255));
+        jlidade.setText("*Idade :");
+
+        jtfidade.setToolTipText("Endereço completo.");
+        jtfidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfidadeActionPerformed(evt);
             }
         });
 
@@ -214,28 +208,6 @@ public class CadastrarCliente extends javax.swing.JFrame {
                         .addComponent(jtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jldatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfdatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtfaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jbEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(73, 73, 73)
-                        .addComponent(jlplano, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jcPlano, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(174, Short.MAX_VALUE))
             .addComponent(jtTabela)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,25 +215,43 @@ public class CadastrarCliente extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jlcpf)
-                                .addGap(18, 18, 18)
-                                .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jlcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfimc, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(141, 141, 141))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jbDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
-                                .addComponent(jbFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jbFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlcpf)
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jlidade, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfidade, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(148, 148, 148))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jlendereco)
                         .addGap(18, 18, 18)
                         .addComponent(jtfEndereco)))
                 .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jlaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(146, 146, 146)
+                                .addComponent(jbEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jtfaltura, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jtfpeso, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,32 +270,28 @@ public class CadastrarCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jlcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlcelular, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfimc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jlidade)
+                            .addComponent(jtfidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlendereco)
                     .addComponent(jtfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jldatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfdatadenascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jtfpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlpeso))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlaltura)
-                    .addComponent(jtfaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlpeso)
-                    .addComponent(jtfpeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlplano)
-                    .addComponent(jcPlano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                    .addComponent(jtfaltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbSalvar)
                     .addComponent(jbEditar)
                     .addComponent(jbDeletar)
                     .addComponent(jbFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addComponent(jtTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
@@ -324,7 +310,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFecharActionPerformed
-          if (jbFechar.getText().equals("Limpar")) {
+        if (jbFechar.getText().equals("Limpar")) {
             limparCampo();
         } else {
             this.dispose();
@@ -333,17 +319,17 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         ClienteServicos cServicos = FactoryServicos.getClienteServicos();
+        PlanoServicos pServicos = FactoryServicos.getPlanoServicos();
 
         if (validaInput()) {
-            int idCliente = 0;
+            int idcliente = 0;
             String nome = jtfNome.getText();
             String cpf = jtfCPF.getText();
-            String imc = jtfimc.getText();
             String endereco = jtfEndereco.getText();
-            String datadenascimento = jtfdatadenascimento.getText();
             String altura = jtfaltura.getText();
             String peso = jtfpeso.getText();
-            Cliente c = new Cliente(idCliente, nome, endereco, datadenascimento, altura, peso, imc, peso, cpf, plano);
+            String idade = jtfidade.getText();
+            Cliente c = new Cliente(idcliente, nome, cpf, idade, endereco, peso, altura);
 
             if (jbSalvar.getText().equals("Confirmar")) {
                 cServicos.atualizarCliente(c);
@@ -388,8 +374,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jbDeletar.setEnabled(true);
 
     }//GEN-LAST:event_jtClienteMouseClicked
-    
-    
+
     public boolean validaInput() {
         if (jtfCPF.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Preencher CPF!");
@@ -410,11 +395,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Preencher Altura!");
             jtfaltura.requestFocus();
             return false;
-        }
-        if (jtfdatadenascimento.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Preencher Data de nascimento!");
-            jtfdatadenascimento.requestFocus();
-            return false;
+
         } else if (jtfpeso.getText() == null) {
             JOptionPane.showMessageDialog(this, "Preencher Peso!");
             jtfpeso.requestFocus();
@@ -422,29 +403,28 @@ public class CadastrarCliente extends javax.swing.JFrame {
         }
         return true;
     }
-    
+
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         jbSalvar.setText("Confirmar");
-        jbFechar.setText("Limpar");
+        jbFechar.setText("Limpar");        
 
         int linha;
         linha = jtCliente.getSelectedRow();
 
         jtfNome.setText((String) jtCliente.getValueAt(linha, 0));
         jtfCPF.setText((String) jtCliente.getValueAt(linha, 1));
-        jtfimc.setText((String) jtCliente.getValueAt(linha, 2));
+        jtfidade.setText((String) jtCliente.getValueAt(linha, 2));
         jtfEndereco.setText((String) jtCliente.getValueAt(linha, 3));
-        jtfdatadenascimento.setText((String) jtCliente.getValueAt(linha, 4));
-        jtfaltura.setText((String) jtCliente.getValueAt(linha, 5));
+        jtfaltura.setText((String) jtCliente.getValueAt(linha, 4));
         jtfpeso.setText((String) jtCliente.getValueAt(linha, 5));
         jtfNome.requestFocus();
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarActionPerformed
-        int linha;       
-       String cpf;
-       linha = jtCliente.getSelectedRow();
-       cpf = (String) jtCliente.getValueAt(linha, 1);
+        int linha;
+        String cpf;
+        linha = jtCliente.getSelectedRow();
+        cpf = (String) jtCliente.getValueAt(linha, 1);
         ClienteServicos cServicos = FactoryServicos.getClienteServicos();
         Object[] rep = {"Sim", "Não"};
         int resposta = JOptionPane.showOptionDialog(this, "Deseja realmente deletar este Cliente ?", "Deletar", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, rep, rep[0]);
@@ -455,25 +435,28 @@ public class CadastrarCliente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Opção cancelada!.");
         }
-        jbDeletar.setVisible(false);
+        jbDeletar.setEnabled(false);
     }//GEN-LAST:event_jbDeletarActionPerformed
+
+    private void jtfidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfidadeActionPerformed
 
     public void addRowToTable() {
         DefaultTableModel model = (DefaultTableModel) jtCliente.getModel();
         model.getDataVector().removeAllElements();// Remove todas as linhas
         model.fireTableDataChanged();
-        Object rowData[] = new Object[5];
+        Object rowData[] = new Object[6];
         ClienteServicos cServicos = FactoryServicos.getClienteServicos();
         for (Cliente c : cServicos.getClientes()) {
             rowData[0] = c.getNome();
             rowData[1] = c.getCpf();
-            rowData[2] = c.getImc();
+            rowData[2] = c.getIdade();
             rowData[3] = c.getEndereco();
-            rowData[4] = c.getDataNascimento();
+            rowData[4] = c.getPeso();
             rowData[5] = c.getAltura();
-            rowData[6] = c.getPeso();
             model.addRow(rowData);
-            
+
         }
     }
 
@@ -481,29 +464,30 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jbSalvar.setText("Salvar");
         jbFechar.setText("Fechar");
         jbEditar.setEnabled(false);
+        jbDeletar.setEnabled(false);
         jtfNome.setText("");
         jtfCPF.setText("");
+        jtfidade.setText("");
+        jtfEndereco.setText("");
         jtfaltura.setText("");
-        jtfdatadenascimento.setText("");
-        jtfimc.setText("");
         jtfpeso.setText("");
 
     }
 
-    public void CarregaPlano() {
+    /*public void CarregaPlano() {
         PlanoServicos pServicos = FactoryServicos.getPlanoServicos();
         try {
             ResultSet rs = pServicos.carregaPlano();
             jcPlano.addItem("Planos : ");
 
             while (rs.next()) {
-                String op = rs.getString("idioma").trim();
+                String op = rs.getString("nomeplano").trim();
                 jcPlano.addItem(op);
             }
         } catch (SQLException ex) {
             System.out.println("Erro ao carregar combobox!\n" + ex.getMessage());
         }
-    }
+    }*/
 
     /**
      * @param args the command line arguments
@@ -549,15 +533,12 @@ public class CadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbFechar;
     private javax.swing.JButton jbSalvar;
-    private javax.swing.JComboBox<String> jcPlano;
     private javax.swing.JLabel jlaltura;
-    private javax.swing.JLabel jlcelular;
     private javax.swing.JLabel jlcpf;
-    private javax.swing.JLabel jldatadenascimento;
     private javax.swing.JLabel jlendereco;
+    private javax.swing.JLabel jlidade;
     private javax.swing.JLabel jlnome;
     private javax.swing.JLabel jlpeso;
-    private javax.swing.JLabel jlplano;
     private javax.swing.JLabel jltitulo2;
     private javax.swing.JTable jtCliente;
     private javax.swing.JScrollPane jtTabela;
@@ -565,8 +546,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jtfEndereco;
     private javax.swing.JTextField jtfNome;
     private javax.swing.JTextField jtfaltura;
-    private javax.swing.JTextField jtfdatadenascimento;
-    private javax.swing.JTextField jtfimc;
+    private javax.swing.JTextField jtfidade;
     private javax.swing.JTextField jtfpeso;
     // End of variables declaration//GEN-END:variables
 }
