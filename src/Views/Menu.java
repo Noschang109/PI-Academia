@@ -35,13 +35,16 @@ public class Menu extends javax.swing.JFrame {
         jmUsuario = new javax.swing.JMenu();
         jmCadastrarCliente = new javax.swing.JMenuItem();
         jmCadastrarFuncionario = new javax.swing.JMenuItem();
+        jmUsuario1 = new javax.swing.JMenu();
+        jmPlanodeTreino = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jFundo.setBackground(new java.awt.Color(51, 0, 204));
+        jFundo.setBackground(new java.awt.Color(153, 204, 255));
 
         jlTitulo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jlTitulo.setForeground(new java.awt.Color(0, 0, 0));
         jlTitulo.setText("ACADEMIA STAR");
 
         jlImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenicon/treinamento.png"))); // NOI18N
@@ -93,6 +96,19 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu.add(jmUsuario);
 
+        jmUsuario1.setText("Gerenciar Plano de treino");
+
+        jmPlanodeTreino.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imag/fitness-on-line.png"))); // NOI18N
+        jmPlanodeTreino.setText("Plano de treino");
+        jmPlanodeTreino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmPlanodeTreinoActionPerformed(evt);
+            }
+        });
+        jmUsuario1.add(jmPlanodeTreino);
+
+        jMenu.add(jmUsuario1);
+
         setJMenuBar(jMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,6 +134,11 @@ public class Menu extends javax.swing.JFrame {
         CadastrarFuncionario cadastro = new CadastrarFuncionario();
         cadastro.setVisible(true);
     }//GEN-LAST:event_jmCadastrarFuncionarioActionPerformed
+
+    private void jmPlanodeTreinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPlanodeTreinoActionPerformed
+        jfPlano cadastro = new jfPlano();
+        cadastro.setVisible(true);
+    }//GEN-LAST:event_jmPlanodeTreinoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +183,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JMenuItem jmCadastrarCliente;
     private javax.swing.JMenuItem jmCadastrarFuncionario;
+    private javax.swing.JMenuItem jmPlanodeTreino;
     private javax.swing.JMenu jmUsuario;
+    private javax.swing.JMenu jmUsuario1;
     // End of variables declaration//GEN-END:variables
 }

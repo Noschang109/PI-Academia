@@ -38,5 +38,10 @@ public class PlanoServicos {
         PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
         return pDAO.getPlano(Plano);
     }   
-    
+   public ArrayList<Planodetreino> getPlanodetreinos() {
+        PlanodeTreinoDAO pDAO = DAOFactory.getPlanoDAO();
+        return pDAO.getPlanosDAO();
+    }
+
+ 
 }

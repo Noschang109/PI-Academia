@@ -23,6 +23,7 @@ public class ClienteDAO {
             pst.setString(4, cVO.getEndereco());
             pst.setString(5, cVO.getPeso());
             pst.setString(6, cVO.getAltura());
+            pst.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Erro ao cadastrar Cliente!\n"
                     + ex.getMessage());
@@ -104,7 +105,7 @@ public class ClienteDAO {
             pst.setString(4, caVO.getEndereco());
             pst.setString(5, caVO.getPeso());
             pst.setString(6, caVO.getAltura());
-            pst.executeQuery();
+            //pst.executeQuery();
 
             pst.executeUpdate();
         } catch (SQLException ex) {

@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import Model.Planodetreino;
+import java.sql.Statement;
+import java.util.ArrayList;
 /**
  *
  * @author MMMM
@@ -89,4 +91,31 @@ public class PlanodeTreinoDAO {
         }
         return p;
     }// Fim GET
+     
+    
+public ArrayList<Planodetreino> getPlanosDAO() {// Inicio GET
+        Connection con = Conexao.getConexao();
+        ArrayList<Planodetreino> planos = new ArrayList<>();
+        try {
+            Statement stat = con.createStatement();
+            String sql = "select * from plano";
+            ResultSet rs = stat.executeQuery(sql);
+            while (rs.next()) {
+                Planodetreino c = new Planodetreino();
+                c.setIdPlano(rs.getInt("idplano"));
+                c.setNomePlano(rs.getString("nomeplano"));
+                c.setSeries(rs.getString("series"));
+                c.setRepeticoes(rs.getInt(""));
+              
+                planos.add(c);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao Erro ao Listar!\n\n"
+                    + ex.getMessage());
+        }
+        return planos;
+    }
+
+
+
 }

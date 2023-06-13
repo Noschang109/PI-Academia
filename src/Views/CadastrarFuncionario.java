@@ -57,12 +57,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jlTitulo.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jlTitulo.setText("CADASTRAR FUNCIONARIO");
 
-        jlNome.setForeground(new java.awt.Color(255, 255, 255));
+        jlNome.setForeground(new java.awt.Color(0, 0, 0));
         jlNome.setText("* Nome:");
 
         jtfNome.setToolTipText("Informe o nome completo.");
@@ -72,7 +72,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jlrg.setForeground(new java.awt.Color(255, 255, 255));
+        jlrg.setForeground(new java.awt.Color(0, 0, 0));
         jlrg.setText("*RG");
 
         jtfCPF.setToolTipText("Informe somente números.");
@@ -92,7 +92,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jlcelular.setForeground(new java.awt.Color(255, 255, 255));
+        jlcelular.setForeground(new java.awt.Color(0, 0, 0));
         jlcelular.setText("*Celular");
 
         try {
@@ -102,7 +102,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         }
         jfcelular.setToolTipText("Informe somente números.");
 
-        jlcpf.setForeground(new java.awt.Color(255, 255, 255));
+        jlcpf.setForeground(new java.awt.Color(0, 0, 0));
         jlcpf.setText("* CPF:");
 
         jtfRG.setToolTipText("Informe somente números.");
@@ -117,12 +117,12 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jlendereco.setForeground(new java.awt.Color(255, 255, 255));
+        jlendereco.setForeground(new java.awt.Color(0, 0, 0));
         jlendereco.setText("* Endereço:");
 
         jtfendereco.setToolTipText("Informe o nome completo.");
 
-        jlcep.setForeground(new java.awt.Color(255, 255, 255));
+        jlcep.setForeground(new java.awt.Color(0, 0, 0));
         jlcep.setText("*CEP");
 
         jtfcep.setToolTipText("Endereço completo.");

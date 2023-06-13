@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexao {
 
     // Cria uma constante com o endereço do BD/Schema
-    private static String url = "jdbc:mysql://localhost:3306/Academia";
+    private static String url = "jdbc:mysql://localhost:3306/academia";
     // Cria uma constante com um user do BD
     private static String user = "root";
     // Cria uma constante com a senha do BD

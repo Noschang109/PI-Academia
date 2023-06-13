@@ -67,18 +67,19 @@ public class CadastrarCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jltitulo2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 36)); // NOI18N
+        jltitulo2.setForeground(new java.awt.Color(0, 0, 0));
         jltitulo2.setText("Cadastrar Cliente");
 
-        jlnome.setForeground(new java.awt.Color(255, 255, 255));
+        jlnome.setForeground(new java.awt.Color(0, 0, 0));
         jlnome.setText("* Nome:");
 
-        jlcpf.setForeground(new java.awt.Color(255, 255, 255));
+        jlcpf.setForeground(new java.awt.Color(0, 0, 0));
         jlcpf.setText("* CPF:");
 
-        jlendereco.setForeground(new java.awt.Color(255, 255, 255));
+        jlendereco.setForeground(new java.awt.Color(0, 0, 0));
         jlendereco.setText("* Endereço:");
 
         jtfNome.setToolTipText("Informe o nome completo.");
@@ -109,14 +110,15 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
         jtfaltura.setToolTipText("Endereço completo.");
 
-        jlpeso.setForeground(new java.awt.Color(255, 255, 255));
+        jlpeso.setForeground(new java.awt.Color(0, 0, 0));
         jlpeso.setText("*Peso");
 
         jtfpeso.setToolTipText("Endereço completo.");
 
-        jlaltura.setForeground(new java.awt.Color(255, 255, 255));
+        jlaltura.setForeground(new java.awt.Color(0, 0, 0));
         jlaltura.setText("*Altura");
 
+        jbSalvar.setForeground(new java.awt.Color(255, 255, 255));
         jbSalvar.setMnemonic('S');
         jbSalvar.setText("Salvar");
         jbSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +183,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             }
         });
 
-        jlidade.setForeground(new java.awt.Color(255, 255, 255));
+        jlidade.setForeground(new java.awt.Color(0, 0, 0));
         jlidade.setText("*Idade :");
 
         jtfidade.setToolTipText("Endereço completo.");
@@ -318,8 +320,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jbFecharActionPerformed
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        ClienteServicos cServicos = FactoryServicos.getClienteServicos();
-        PlanoServicos pServicos = FactoryServicos.getPlanoServicos();
+        ClienteServicos cServicos = FactoryServicos.getClienteServicos();        
 
         if (validaInput()) {
             int idcliente = 0;
@@ -330,7 +331,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             String peso = jtfpeso.getText();
             String idade = jtfidade.getText();
             Cliente c = new Cliente(idcliente, nome, cpf, idade, endereco, peso, altura);
-
+            System.out.println(c);
             if (jbSalvar.getText().equals("Confirmar")) {
                 cServicos.atualizarCliente(c);
             } else {
