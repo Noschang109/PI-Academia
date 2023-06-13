@@ -99,6 +99,12 @@ public class ClienteDAO {
             String sql = "update cliente set   nome = ? , cpf  = ? , idade     = ? , endereco = ? ,peso  = ? , altura = ? ";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, caVO.getNome());
+            pst.setString(2, caVO.getCpf());
+            pst.setString(3, caVO.getIdade());
+            pst.setString(4, caVO.getEndereco());
+            pst.setString(5, caVO.getPeso());
+            pst.setString(6, caVO.getAltura());
+            pst.executeQuery();
 
             pst.executeUpdate();
         } catch (SQLException ex) {
